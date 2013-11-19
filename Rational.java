@@ -3,7 +3,7 @@
 //HW#27
 //2013-11-18
 
-public class Rational{
+public class Rational implements Comparable{
 	private int _numerator, _denominator;
 	public Rational(){
 		_numerator = 0;
@@ -66,9 +66,11 @@ public class Rational{
 		_numerator /= gcd;
 		_denominator /= gcd;
 	}
-	public int compareTo(Rational r){
-		int crossThis = _numerator * r.getDenominator(); //Use cross multiplcation to find greater
-		int crossThat = _denominator * r.getNumerator();
+	public int compareTo(Object r){
+		if (!(r instanceof Rational))
+			return -2;
+		int crossThis = _numerator * ((Rational) r).getDenominator(); //Use cross multiplcation to find greater
+		int crossThat = _denominator * ((Rational) r).getNumerator();
 		if (crossThis == crossThat)
 			return 0;
 		else if (crossThis > crossThat)
@@ -76,6 +78,9 @@ public class Rational{
 		else
 			return -1;
 				
+	}
+	public boolean equals(Rational r){
+		return (_numerator == r.getNumerator() && _denominator == r.getDenominator());
 	}
 	public static void main(String[] args){
 		Rational a = new Rational(3,4);
