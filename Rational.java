@@ -68,7 +68,7 @@ public class Rational implements Comparable{
 	}
 	public int compareTo(Object r){
 		if (!(r instanceof Rational))
-			return -2;
+			throw new ClassCastException("compareTo() input not a Rational");;
 		int crossThis = _numerator * ((Rational) r).getDenominator(); //Use cross multiplcation to find greater
 		int crossThat = _denominator * ((Rational) r).getNumerator();
 		if (crossThis == crossThat)
@@ -79,9 +79,27 @@ public class Rational implements Comparable{
 			return -1;
 				
 	}
-	public boolean equals(Rational r){
-		return (_numerator * r.getDenominator() == _denominator * r.getNumerator());
-	}
+	public boolean equals( Object other ) { 
+
+        //First, reduce both fractions.
+        //...thus allowing for direct comparison of attributes
+        reduce();
+
+        if ( other instanceof Rational ) 
+            ((Rational)other).reduce();
+        /* Typecasting necessary because var type of other is Object, 
+           and an Object does not have a reduce() method.
+         */
+
+        //Q: Why is boolean short-circuiting essential below?
+        //   ie, What would happen if Java did not do BS-C?
+        return this == other //check for aliases
+            || 
+            ( other instanceof Rational
+              && this._numerator == ((Rational)other)._numerator 
+              && this._denominator == ((Rational)other)._denominator );
+
+    }//end equals()
 	public static void main(String[] args){
 		Rational a = new Rational(3,4);
 		Rational b = new Rational(4,3);
