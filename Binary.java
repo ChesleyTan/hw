@@ -77,9 +77,9 @@ public class Binary {
 		return (n instanceof Binary && _binNum.equals( ((Binary) n).getBin()) ); 
 	}
 	public int compareTo(Object n){
-		return (!(n instanceof Binary)) ? -2 
-				: (((Binary) n).getDec() > _decNum) ? -1 
-				: (((Binary) n).getDec() == _decNum) ? 0 
+		return !(n instanceof Binary) ? -2 
+				: ((Binary) n).getDec() > _decNum ? -1 
+				: ((Binary) n).getDec() == _decNum ? 0 
 				: 1; 
 	}
 
