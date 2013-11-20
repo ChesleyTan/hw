@@ -1,5 +1,7 @@
-//skeleton file for class Binary
-// eventually should adhere to specifications of Comparable interface
+//Chesley Tan
+//pd 9
+//HW29
+//2013-11-20
 
 public class Binary {
 
