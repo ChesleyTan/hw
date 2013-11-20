@@ -62,9 +62,7 @@ public class Binary {
       eg  decToBin(14) -> "1110"
       =====================================*/
     public static String decToBinR( int n ) { 
-		if (n == 0)
-			return "";
-		return decToBinR(n / 2) + (n % 2);
+		return n == 0 ? "" : decToBin(n / 2) + (n % 2);
 	}
 	
 	public String getBin(){
@@ -90,7 +88,9 @@ public class Binary {
 	System.out.println("decToBin(14): " + decToBin(14));
 	System.out.println("decToBin(5): " + decToBin(5));
 	System.out.println("decToBinR(14): " + decToBinR(14));
-	System.out.println("decTOBinR(5): " + decToBinR(5));
+	System.out.println("decToBinR(5): " + decToBinR(5));
+	System.out.println("decToBin(1122): " + decToBin(1122));
+	System.out.println("decToBinR(1122): " + decToBinR(1122));
 	
 
 	Binary b1 = new Binary(5);
@@ -115,6 +115,7 @@ public class Binary {
 	System.out.println("a1.compareTo(a2)): " + a1.compareTo(a2));
 	System.out.println("a2.compareTo(a1)): " + a2.compareTo(a1));
 	System.out.println("a1.compareTo(a3)): " + a1.compareTo(a3));
+
     }//end main()
 
 } //end class
