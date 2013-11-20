@@ -80,7 +80,7 @@ public class Rational implements Comparable{
 				
 	}
 	public boolean equals(Rational r){
-		return (_numerator == r.getNumerator() && _denominator == r.getDenominator());
+		return (_numerator * r.getDenominator() == _denominator * r.getNumerator());
 	}
 	public static void main(String[] args){
 		Rational a = new Rational(3,4);
@@ -163,5 +163,13 @@ public class Rational implements Comparable{
 		System.out.println("Compare a and b:[0 means equal, 1 means a > b, -1 means b > a]");
 		System.out.println(a.compareTo(b));
 		
+		System.out.println("======================================");
+		
+		a = new Rational(10,4);
+		b = new Rational(20,8);
+		System.out.println("a: " + a);
+		System.out.println("b: " + b);
+		System.out.println("a = b ?");
+		System.out.println(a.equals(b));
 	}
 }
