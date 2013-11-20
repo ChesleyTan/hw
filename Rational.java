@@ -1,7 +1,7 @@
 //Chesley Tan
 //pd9
-//HW#27
-//2013-11-18
+//HW#28
+//2013-11-19
 
 public class Rational implements Comparable{
 	private int _numerator, _denominator;
