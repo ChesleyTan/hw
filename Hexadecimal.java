@@ -42,7 +42,7 @@ public class Hexadecimal implements Comparable {
 
 
     /*=====================================
-      String decToHex(int) -- converts base-10 input to binary
+      String decToHex(int) -- converts base-10 input to hexadecimal
       pre:  n >= 0
       post: returns String of hex digits
       eg  decToHex(0) -> "0"
@@ -65,7 +65,7 @@ public class Hexadecimal implements Comparable {
 
 
     /*=====================================
-      String decToHexR(int) -- converts base-10 input to binary, recursively
+      String decToHexR(int) -- converts base-10 input to hexadecimal, recursively
       pre:  n >= 0
       post: returns String of hex digits
       eg  decToHexR(0) -> "0"
@@ -87,7 +87,7 @@ public class Hexadecimal implements Comparable {
       boolean equals(Object) -- tells whether 2 Objs are equivalent
       pre:  other is an instance of class Hexadecimal
       post: Returns true if this and other are aliases (pointers to same 
-            Object), or if this and other represent equal binary values
+            Object), or if this and other represent equal hexadecimal values
       =============================================*/
     public boolean equals( Object other ) { 
 		return (other instanceof Hexadecimal && _hexNum.equals( ((Hexadecimal) other).getHex()) ); 
