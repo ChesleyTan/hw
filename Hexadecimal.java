@@ -57,10 +57,10 @@ public class Hexadecimal implements Comparable {
       =====================================*/
     public static String decToHex( int n ) {
 		String retStr = HEXDIGITS.substring(n % 16, n % 16 + 1);
-		//while (n > 0){
-		//	retStr = HEXDIGITS.substring( (n = (n / 16)) % 16, n % 16) + retStr;
-		//}	
-		return retStr;// Removes extra 0 added from last iteration of the while loop
+		while (n > 0){
+			retStr = HEXDIGITS.substring( (n = (n / 16)) % 16, n % 16 + 1) + retStr;
+		}	
+		return retStr.substring(1);// Removes extra 0 added from last iteration of the while loop
     }
 
 
@@ -79,7 +79,7 @@ public class Hexadecimal implements Comparable {
 	  decToHexR(42) -> "2A"
       =====================================*/
     public static String decToHexR( int n ) { 
-		return "";
+		return n == 0 ? "" : decToHexR(n / 16) + HEXDIGITS.substring((n % 16), (n % 16 + 1));
     }
 
 
@@ -90,8 +90,7 @@ public class Hexadecimal implements Comparable {
             Object), or if this and other represent equal binary values
       =============================================*/
     public boolean equals( Object other ) { 
-		return false;
-
+		return (other instanceof Hexadecimal && _hexNum.equals( ((Hexadecimal) other).getHex()) ); 
     }
 
 
@@ -102,9 +101,17 @@ public class Hexadecimal implements Comparable {
             negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-		return 0;
-
+		return !(other instanceof Hexadecimal) ? -2 
+				: ((Hexadecimal) other).getDec() > _decNum ? -1 
+				: ((Hexadecimal) other).getDec() == _decNum ? 0 
+				: 1; 
     }
+	public int getDec(){
+		return _decNum;
+	}
+	public String getHex(){
+		return _hexNum;
+	}
 
 
     //main method for testing
@@ -118,15 +125,11 @@ public class Hexadecimal implements Comparable {
 	Hexadecimal h3 = h1;
 	Hexadecimal h4 = new Hexadecimal(20);
 
-	System.out.println( decToHex(10) );
 	System.out.println( h1 );
 	System.out.println( h2 );
 	System.out.println( h3 );       
 	System.out.println( h4 );       
 
-	// Here be Ye Olde Friendly Top-Comment-Bar.
-	//    Move it down as you incrementally develop & test...
-	/*=========================================
 	System.out.println( "\n==..." );
 	System.out.println( h1 == h2 ); //should be false
 	System.out.println( h1 == h3 ); //should be true
@@ -143,7 +146,10 @@ public class Hexadecimal implements Comparable {
 	System.out.println( h1.compareTo(h3) ); //should be 0
 	System.out.println( h1.compareTo(h4) ); //should be neg
 	System.out.println( h4.compareTo(h1) ); //should be pos
-	  =========================================*/
-    }//end main()
+    
+	
+	System.out.println("\nExtra: decToHex(1013531): " +  decToHex(1013531) );
+	System.out.println("Extra: decToHexR(1013531): " +  decToHex(1013531) );
+	}//end main()
 
 } //end class
