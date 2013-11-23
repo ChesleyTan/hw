@@ -3,7 +3,7 @@
 //HW29
 //2013-11-20
 
-public class Binary {
+public class Binary implements Comparable {
 
     private int _decNum;
     private String _binNum;
