@@ -49,6 +49,8 @@ public class Rational implements Comparable{
 	}
 	public static int getGCD(int numerator, int denominator){
 		int divisor, dividend, remainder;
+		if (numerator == 0 || denominator == 0)
+			return 1;
 		divisor = Math.min(numerator,denominator);
 		remainder = Math.max(numerator,denominator) % divisor;
 		while (remainder != 0){
