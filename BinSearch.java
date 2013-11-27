@@ -27,7 +27,7 @@ public class BinSearch {
 
 
     public static int binSearchRec( int[] a, int target, int lo, int hi ) {
-		if (lo >= hi)
+		if (lo > hi)
 			return -1;
 		else{
 			if (a[(lo + hi) / 2] == target)
