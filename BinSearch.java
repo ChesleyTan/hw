@@ -46,7 +46,7 @@ public class BinSearch {
 
 
     public static int binSearchIter( int[] a, int target, int lo, int hi ) {
-		while (lo < hi){
+		while (lo <= hi){
 			if (a[(lo + hi) / 2] == target)
 				return (lo + hi) / 2;
 			else if (a[(lo + hi) / 2] > target)
