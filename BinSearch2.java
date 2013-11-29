@@ -16,10 +16,10 @@ public class BinSearch2 {
       post: returns index of target, or returns -1 if target not found
       ==================================================*/
     public static int binSearch ( Comparable[] a, int target ) {
-		if (!isSorted(a)){
-			System.out.println("Array not sorted.");
-			return -1;
-		}
+		//if (!isSorted(a)){
+		//	System.out.println("Array not sorted.");
+		//	return -1;
+		//}
 		//uncomment exactly 1 of the 2 stmts below:
 		return binSearchIter(a, target, 0, a.length-1 );
 		//return binSearchRec( a, target, 0, a.length-1 );
