@@ -1,3 +1,7 @@
+// Chesley Tan
+// pd9
+// HW36
+// 2013-12-02
 /*==================================================
   class SuperArray
   Wrapper class for array. Facilitates resizing, 
