@@ -1,3 +1,8 @@
+// Chesley Tan
+// pd9
+// HW37
+// 2013-12-03
+
 /*==================================================
   class SuperArray version 2.0
   Wrapper class for array. Facilitates 
