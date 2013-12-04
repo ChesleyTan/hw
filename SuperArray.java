@@ -67,7 +67,7 @@ public class SuperArray implements ListInt {
 
 
     //adds an item after the last item
-    public void add( int newVal ) { 
+    public boolean add( int newVal ) { 
 		if (_data.length <= _size){
 			expand();
 		}
@@ -76,6 +76,7 @@ public class SuperArray implements ListInt {
 		_data[_lastPos + 1] = newVal;
 		_lastPos++;
 		_size++;
+		return true;
     }
 
 
@@ -95,13 +96,15 @@ public class SuperArray implements ListInt {
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove( int index ) { 
-    	for (int i = index;i<_lastPos;i++){
+    public int remove( int index ) { 
+    	int temp = _data[index];
+		for (int i = index;i<_lastPos;i++){
 			_data[i] = _data[i+1];
 		}
 		_data[_size-1] = 0;//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
 		_size--;
 		_lastPos--;
+		return temp;
 	}
 
 
