@@ -14,7 +14,7 @@
   removing an element at specified index
   ==================================================*/
 
-public class SuperArray {
+public class SuperArray implements ListInt {
 
     private int[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
@@ -68,7 +68,7 @@ public class SuperArray {
 
     //adds an item after the last item
     public void add( int newVal ) { 
-		if (_data.length == _lastPos - 1){
+		if (_data.length <= _size){
 			expand();
 		}
 		if (_lastPos == 0 && _size == 0)
@@ -99,6 +99,7 @@ public class SuperArray {
     	for (int i = index;i<_lastPos;i++){
 			_data[i] = _data[i+1];
 		}
+		_data[_size-1] = 0;//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
 		_size--;
 		_lastPos--;
 	}
