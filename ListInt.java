@@ -1,8 +1,8 @@
 public interface ListInt{
-	public void add(int n);
-	public void add(int index, int n);
-	public int get(int index);
-	public int set(int index, int n);
-	public void remove(int index);
-	public int size();
+	void add(int n);
+	void add(int index, int n);
+	int get(int index);
+	int set(int index, int n);
+	void remove(int index);
+	int size();
 }
