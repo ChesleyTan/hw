@@ -1,7 +1,7 @@
 // Chesley Tan
 // pd9
-// HW38
-// 2013-12-04
+// HW39
+// 2013-12-06
 
 
 public class SuperArray implements ListObj {
@@ -18,9 +18,6 @@ public class SuperArray implements ListObj {
 		_size = 0;	
     }
 
-    //output array in [a,b,c] format
-    //eg, for int[] a = {1,2,3} ...
-    //toString() -> "[1,2,3]"
     public String toString() { 
 		String foo = "[";
 		for( int i = 0; i < _size; i++ ) {

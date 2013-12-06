@@ -1,3 +1,7 @@
+// Chesley Tan
+// pd9
+// HW39
+// 2013-12-06
 /*==================================================
   class SuperArray version 5.0
   Wrapper class for array. Facilitates 
@@ -21,7 +25,7 @@ public class SuperArray<T> implements List<T> {
     //default constructor
     //initializes 10-item array
     public SuperArray() { 
-	_data = new Object[10]; //typecast into array of T's
+	_data = new Object[10];//Even if we declared _data as a T[] or typecasted Object[] _data to T[], it will still be considered an Object[] so a typecast would be superfluous.  Also, using a T[] to store _data would cause problems when _data is called in a static method such as main because it would then have to be typecasted to an Object[] for the call to work.  For example, if we declared T[] data, we would later on have to do ((Object[]) curtis._data).length to obtain the length.
 	_lastPos = 0;
 	_size = 0;	
     }
@@ -157,8 +161,6 @@ public class SuperArray<T> implements List<T> {
 	mayfield.add(1,77);
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
-	/*===========================================
-	===========================================*/
     }//end main()
 
 }//end class SuperArray
