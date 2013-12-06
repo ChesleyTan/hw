@@ -1,31 +1,26 @@
-/*==================================================
-  class SuperArray version 5.0
-  Wrapper class for array. Facilitates 
-  *  resizing 
-  *  expansion 
-  *  read/write capability on elements
-  *  adding an element to end of array
-  *  adding an element at specified index
-  *  removing an element at specified index
-  ...and now SuperArray complies with the specifications of the 
-  List interface. (List.java must be in same dir as this file)
-  ==================================================*/
+// Chesley Tan
+// pd9
+// HW38
+// 2013-12-04
 
-public class SuperArray<T> implements List<T> {
+
+public class SuperArray implements ListObj {
 
     private Object[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
     private int _size;    //number of meaingful values
 
-
     //default constructor
     //initializes 10-item array
     public SuperArray() { 
-	_data = new Object[10]; //typecast into array of T's
-	_lastPos = 0;
-	_size = 0;	
+		_data = new Object[10];
+		_lastPos = 0;
+		_size = 0;	
     }
 
+    //output array in [a,b,c] format
+    //eg, for int[] a = {1,2,3} ...
+    //toString() -> "[1,2,3]"
     public String toString() { 
 		String foo = "[";
 		for( int i = 0; i < _size; i++ ) {
@@ -42,18 +37,18 @@ public class SuperArray<T> implements List<T> {
 	private void expand() { 
 		Object[] temp = new Object[ _data.length * 2 ];
 		for( int i = 0; i < _data.length; i++ )
-			temp[i] = (T) _data[i];
+			temp[i] = _data[i];
 		_data = temp;
     }
 
     //accessor method -- return value at specified index
-    public T get( int index ) {
-		return (T) _data[index];
+    public Object get( int index ) {
+		return _data[index];
     }
 
     //mutator method -- set index to newVal, return old value at index
-    public T set( int index, T newVal ) {
-		T temp = (T) _data[index];
+    public Object set( int index, Object newVal ) {
+		Object temp = _data[index];
 		_data[index] = newVal;
 		_size = index + 1;
 		_lastPos = index;
@@ -62,7 +57,7 @@ public class SuperArray<T> implements List<T> {
 
 
     //adds an item after the last item
-    public boolean add( T newVal ) { 
+    public boolean add( Object newVal ) { 
 		if (_data.length <= _size){
 			expand();
 		}
@@ -76,7 +71,7 @@ public class SuperArray<T> implements List<T> {
 
 
     //inserts an item at index    
-    public void add( int index, T newVal ) { 
+    public void add( int index, Object newVal ) { 
     	while (_data.length == _lastPos - 1 || index > _data.length - 1){
 			expand();
 		}
@@ -91,12 +86,12 @@ public class SuperArray<T> implements List<T> {
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public T remove( int index ) { 
-    	T temp = (T) _data[index];
+    public Object remove( int index ) { 
+    	Object temp = _data[index];
 		for (int i = index;i<_lastPos;i++){
 			_data[i] = _data[i+1];
 		}
-		_data[_size-1] = (T) new Integer(0);//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
+		_data[_size-1] = 0;//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
 		_size--;
 		_lastPos--;
 		return temp;
@@ -108,15 +103,17 @@ public class SuperArray<T> implements List<T> {
     	return _size;
 	}
 
+
     public static void main( String[] args ) {
 
-	SuperArray<Integer> curtis = new SuperArray<Integer>();
+	SuperArray curtis = new SuperArray();
 	System.out.println( "Printing empty SuperArray curtis..." );
 	System.out.println( curtis );
 
 	for( int i = 0; i < curtis._data.length; i++ ) {
 	    curtis.set( i, i * 2 );
 	}
+
 	System.out.println("Printing populated SuperArray curtis...");
 	System.out.println(curtis);
 
@@ -125,10 +122,10 @@ public class SuperArray<T> implements List<T> {
 	    System.out.println("Printing expanded SuperArray curtis...");
 	    System.out.println(curtis);
 	    System.out.println("new length of underlying array: " 
-			       + curtis._data.length);
+			       + curtis._data.length );
 	}
-	
-	SuperArray<Integer> mayfield = new SuperArray<Integer>();
+
+	SuperArray mayfield = new SuperArray();
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
 
@@ -157,8 +154,6 @@ public class SuperArray<T> implements List<T> {
 	mayfield.add(1,77);
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
-	/*===========================================
-	===========================================*/
     }//end main()
 
 }//end class SuperArray
