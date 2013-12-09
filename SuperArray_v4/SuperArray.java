@@ -88,7 +88,7 @@ public class SuperArray implements ListObj {
 		for (int i = index;i<_lastPos;i++){
 			_data[i] = _data[i+1];
 		}
-		_data[_size-1] = 0;//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
+		_data[_size-1] = null;//Necessary because add allows for insertion of data at index beyond the range of the current array length.  This would make everything before the inserted element meaningful and thus any junk values as well
 		_size--;
 		_lastPos--;
 		return temp;
