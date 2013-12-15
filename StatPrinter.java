@@ -70,7 +70,7 @@ public class StatPrinter {
     //*************** QUESTION __ **************************
     //precond:  data.size() > 0
     //postcond: returns largest integer in data
-    public Integer max( ArrayList <Integer> data ) { 
+    public Integer max( ArrayList <Integer> data ) { // Runtime O(n)
 		int max = data.get(0); //Initial value for max	
 		for (int i = 1;i<data.size();i++){ //Start checking at index 1
 			if (data.get(i) > max){ //Check for new max value
@@ -91,14 +91,14 @@ public class StatPrinter {
     //    isLocalMode(0) -> false
     //    isLocalMode(1) -> true
     //    isLocalMode(5) -> true
-    public boolean isLocalMode( int i ) { 
+    public boolean isLocalMode( int i ) { // Runtime O(1)
 		return (i>0 && i<_frequency.size()-1) && (_frequency.get(i-1) < _frequency.get(i)) && (_frequency.get(i+1) < _frequency.get(i));
     }
 
 
     //*************** QUESTION __ **************************
     //postcond: returns list of modes in _frequency
-    public ArrayList <Integer> getLocalModes() {
+    public ArrayList <Integer> getLocalModes() { // Runtime O(n)
 		ArrayList<Integer> retArr = new ArrayList<Integer>();	
 		for (int i = 0;i<_frequency.size();i++){
 			if (isLocalMode(i)){ //Iterates through, checking for a local mode
@@ -111,7 +111,7 @@ public class StatPrinter {
 
     //*************** QUESTION __ **************************
     //precond:  longestBar > 0
-    public void printHistogram( int longestBar ) { 
+    public void printHistogram( int longestBar ) { // Runtime O(n)
 		double multiplier = longestBar * 1.0 / max(_frequency);
 		int counter; //Keep track of number of stars as they are printed
 		for (int i = 0;i<_frequency.size();i++){
