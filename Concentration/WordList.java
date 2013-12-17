@@ -24,6 +24,10 @@ public class WordList {
 		myList.add("dog");
 		myList.add("cow");
 		myList.add("pig");
+		myList.add("bat");
+		myList.add("ape");
+		myList.add("eel");
+		myList.add("rat");
 	}
     //postcond: returns the number of words in this WordList that are 
     //          exactly len letters long
