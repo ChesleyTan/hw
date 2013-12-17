@@ -107,7 +107,7 @@ public class Concentration {
 				tileNumber2 = Keyboard.readInt() - 1;// subtract 1 to account for array start at index 0 while display to user starts at index 1
 			}
 			_board.get(tileNumber2).flip();
-			System.out.println("You flipped a " + _board.get(tileNumber1) + "!");
+			System.out.println("You flipped a " + _board.get(tileNumber2) + "!");
 			printBoard();
 			// Decides if the user found a match or not.
 			// If no match, then both tiles are flipped back over.
