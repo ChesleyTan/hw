@@ -31,7 +31,7 @@ public class Concentration {
 		_board = new ArrayList<Tile>();
 		for (int i = 0;i<(_numRows * _numRows) / _list.size();i++){ //Repeat to fill up board completely
 			for (int u = 0;u<_list.size();u++){ //Initially add animals from _list to _board
-				_board.add(new Tile(_list.get(i)));
+				_board.add(new Tile(_list.get(u)));
 			}
 		}
 		for (int i = 0;i<50;i++){// Randomize positions of animals on grid
@@ -40,7 +40,8 @@ public class Concentration {
 			_board.set(random1,_board.set(random2,_board.get(random1)));
 		}
 	}
-	/*  Method intended for testing/debugging
+    //Method intended for testing/debugging
+	/*
 	public void revealBoard(){
 		for (int i = 0;i<_board.size();i++){
 			if (!_board.get(i).isFaceUp()){
@@ -50,6 +51,7 @@ public class Concentration {
 		printBoard();
 	}
 	*/
+
 
 	// Method for printing out grid
 	public void printBoard(){
