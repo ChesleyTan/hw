@@ -96,8 +96,11 @@ public class KnightsTour{
             kt.showSteps(false); 
         }
         System.out.println("[2J");
+        long startTime = System.currentTimeMillis();
         kt.solve(0, 0); 
+        long endTime = System.currentTimeMillis();
         System.out.println("[0;0H" + kt.toString());
+        System.out.println("Solved in " + (endTime - startTime) + " ms");
     }
     
 }
