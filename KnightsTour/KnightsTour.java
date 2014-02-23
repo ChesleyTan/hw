@@ -59,14 +59,14 @@ public class KnightsTour{
                 System.out.println("[2J[0;0H" + toString());
                 delay(0.001);
             }
-            solve(targXCoor + 2, targYCoor + 1);
-            solve(targXCoor + 2, targYCoor - 1);
-            solve(targXCoor - 2, targYCoor + 1);
             solve(targXCoor - 2, targYCoor - 1);
-            solve(targXCoor + 1, targYCoor + 2);
-            solve(targXCoor + 1, targYCoor - 2);
             solve(targXCoor - 1, targYCoor + 2);
+            solve(targXCoor - 2, targYCoor + 1);
+            solve(targXCoor + 1, targYCoor + 2);
+            solve(targXCoor + 2, targYCoor + 1);
             solve(targXCoor - 1, targYCoor - 2);
+            solve(targXCoor + 2, targYCoor - 1);
+            solve(targXCoor + 1, targYCoor - 2);
             if (move != (gridSize * gridSize) + 1) {
                 move--;
                 grid[targYCoor][targXCoor] = blank;
