@@ -7,7 +7,7 @@
   skeleton file
   ==================================================*/
 
-public class BinSearch2 {
+public class BinSearchComparables {
 
 
     /*==================================================
