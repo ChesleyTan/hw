@@ -117,7 +117,7 @@ public class MergeSortComparable {
             entropy = 51;
         }
 
-        // Implementation with Strings
+        /* Implementation with Strings
         String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         ArrayList<Comparable> a = new ArrayList<Comparable>();
         for (int i = 0;i < length;i++) {
@@ -138,6 +138,7 @@ public class MergeSortComparable {
         System.out.println(ret);
         System.out.println();
         System.out.println("Sorted random array of length " + length + " in " + (endTime - startTime) + " ms."); 
+        */
 
         /* Implementation with ints 
         ArrayList<Comparable> a = new ArrayList<Comparable>();
@@ -154,5 +155,27 @@ public class MergeSortComparable {
         System.out.print("Sorted:   ");
         System.out.println(ret);
         */
+
+        // Implementation with Person
+        String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        ArrayList<Comparable> a = new ArrayList<Comparable>();
+        for (int i = 0;i < length;i++) {
+            String name = "";
+            int age = 0;
+            for (int u = 0;u < strLength;u++) {
+                name += Character.toString(letters.charAt((int) (entropy * Math.random())));
+                age = (int) (entropy * Math.random());
+            }
+            a.add(new Person(name, age));
+        }
+        long startTime = System.currentTimeMillis();
+        ArrayList<Comparable> ret = sort(a);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Sorted random array of length " + length + " in " + (endTime - startTime) + " ms."); 
+        System.out.print("Unsorted: ");
+        System.out.println(a);
+        System.out.println("\n\n\n\n\n\n\n");
+        System.out.print("Sorted:   ");
+        System.out.println(ret);
     }
 }
