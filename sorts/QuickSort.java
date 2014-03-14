@@ -1,44 +1,33 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 public class QuickSort {
-    public Integer[] sort(Integer[] a) {
-        if (a.length <= 1)
-            return a;
-        else {
-            int pivotIndex = (int) (a.length * Math.random());
-            int pivot = a[pivotIndex];
-            ArrayList<Integer> lower = new ArrayList<Integer>();
-            ArrayList<Integer> higher = new ArrayList<Integer>();
-            for (int i = 0;i < pivotIndex;i++) {
-                if (a[i] > pivot) {
-                    higher.add(a[i]);
-                }
-                else {
-                    lower.add(a[i]);
-                }
-            }
-            for (int i = pivotIndex + 1;i < a.length;i++) {
-                if (a[i] > pivot) {
-                    higher.add(a[i]);
-                }
-                else {
-                    lower.add(a[i]);
-                }
-            }
-            Integer[] lowerArr = lower.toArray(new Integer[]{});
-            Integer[] higherArr = higher.toArray(new Integer[]{});
-            Integer[] r1 = sort(lowerArr);
-            Integer[] r2 = sort(higherArr);
-            for (int i = 0;i < r1.length;i++) {
-                a[i] = r1[i];
-            }
-            a[r1.length] = pivot;
-            for (int i = 0;i < r2.length;i++) {
-                a[i + r1.length + 1] = r2[i];
-            }
+    public int[] sort(int[] a, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(a, low, high);
+            sort(a, low, pivotIndex - 1);
+            sort(a, pivotIndex + 1, high);
         }
         return a;
+    }
+    public int partition(int[] a, int low, int high) {
+        int pivotIndex = (int) ((high - low + 1) * Math.random() + low);
+        int pivot = a[pivotIndex];
+        a[pivotIndex] = a[high];
+        a[high] = pivot;
+        int wall = low;
+        int wallValue;
+        for (;low < high;low++) {
+            if (a[low] < pivot) {
+                wallValue = a[wall];
+                a[wall] = a[low];
+                a[low] = wallValue;
+                wall++;
+            }
+        }
+        a[high] = a[wall];
+        a[wall] = pivot;
+        pivotIndex = wall;
+        return pivotIndex;
     }
     public static void main(String[] args) {
         int length = 10;
@@ -69,14 +58,16 @@ public class QuickSort {
 
         QuickSort qs = new QuickSort();
         Random rand = new Random();
-        Integer[] a = new Integer[length];
+        int[] a = new int[length];
         for (int i = 0;i < length;i++) {
-            a[i] = new Integer(rand.nextInt(entropy));
+            a[i] = rand.nextInt(entropy);
         }
         long startTime = System.currentTimeMillis();
-        Integer[] sorted = qs.sort(a);
+        //int[] sorted = qqs.sort(a, 0, a.length - 1);
+        qs.sort(a, 0, a.length - 1);
+
         long endTime = System.currentTimeMillis();
-        System.out.println(Arrays.toString(sorted));
+        //System.out.println(Arrays.toString(sorted));
         System.out.println("Sorted array of length " + length + " in " + (endTime - startTime) + " ms.");
     }
 }
