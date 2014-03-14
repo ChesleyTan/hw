@@ -14,9 +14,9 @@ public class QuickSortDuplicates {
         int pivot = a[pivotIndex];
         a[pivotIndex] = a[high];
         a[high] = pivot;
-        int wall = low;
+        int wall = low; // Wall keeps track of where the pivot should be
         int wallValue;
-        for (;low < high;low++) {
+        for (;low < high;low++) { // Iterates through array, swapping values > pivot in front of the wall
             if (a[low] < pivot) {
                 wallValue = a[wall];
                 a[wall] = a[low];
@@ -24,15 +24,15 @@ public class QuickSortDuplicates {
                 wall++;
             }
         }
-        int dupesWall = wall;
+        int dupesWall = wall; // After the normal partition is done, we iterate through the array again, placing all duplicates of the pivot at the front
         for (int i = wall;i <= high;i++) {
             if (a[i] == pivot) {
-                a[i] = a[dupesWall];
-                a[dupesWall] = pivot;
+                a[i] = a[dupesWall]; // The value at the dupesWall will be inserted elsewhere in the array
+                a[dupesWall] = pivot; // and pivot will be added to the chunk of duplicates
                 dupesWall++;
             }
         }
-        return (wall + dupesWall) / 2;
+        return (wall + dupesWall) / 2; // Returns middle index of this chunk of duplicates
     }
     public static void main(String[] args) {
         int length = 10;

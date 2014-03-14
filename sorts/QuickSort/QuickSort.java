@@ -17,9 +17,9 @@ public class QuickSort {
         int pivot = a[pivotIndex];
         a[pivotIndex] = a[high];
         a[high] = pivot;
-        int wall = low;
+        int wall = low; // Wall keeps track of where the pivot should be
         int wallValue;
-        for (;low < high;low++) {
+        for (;low < high;low++) { // Iterates through array, swapping values > pivot in front of the wall
             if (a[low] < pivot) {
                 wallValue = a[wall];
                 a[wall] = a[low];
