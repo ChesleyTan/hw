@@ -117,16 +117,16 @@ public class MergeSort {
         int[] ret = MergeSort.sort(a);
         long endTime = System.currentTimeMillis();
         System.out.println("Sorted random array of length " + length + " in " + (endTime - startTime) + " ms."); 
-        System.out.print("Unsorted: ");
-        for (int i : a) {
-            System.out.print(Integer.toString(i) + " ");
-        }
-        System.out.println();
-        System.out.print("Sorted:   ");
-        for (int i : ret) {
-            System.out.print(Integer.toString(i) + " ");
-        }
-        System.out.println();
+        //System.out.print("Unsorted: ");
+        //for (int i : a) {
+        //    System.out.print(Integer.toString(i) + " ");
+        //}
+        //System.out.println();
+        //System.out.print("Sorted:   ");
+        //for (int i : ret) {
+        //    System.out.print(Integer.toString(i) + " ");
+        //}
+        //System.out.println();
 
     }
 }
