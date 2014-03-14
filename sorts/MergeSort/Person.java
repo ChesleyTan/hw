@@ -1,3 +1,4 @@
+/* Class implementing Comparable to test MergeSortComparable */
 public class Person implements Comparable {
     private String name;
     private int age;

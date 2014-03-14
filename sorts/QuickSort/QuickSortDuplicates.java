@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
-public class QuickSort {
+public class QuickSortDuplicates {
     public int[] sort(int[] a, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(a, low, high);
@@ -24,10 +24,15 @@ public class QuickSort {
                 wall++;
             }
         }
-        a[high] = a[wall];
-        a[wall] = pivot;
-        pivotIndex = wall;
-        return pivotIndex;
+        int dupesWall = wall;
+        for (int i = wall;i <= high;i++) {
+            if (a[i] == pivot) {
+                a[i] = a[dupesWall];
+                a[dupesWall] = pivot;
+                dupesWall++;
+            }
+        }
+        return (wall + dupesWall) / 2;
     }
     public static void main(String[] args) {
         int length = 10;
@@ -56,14 +61,15 @@ public class QuickSort {
         }
 
 
-        QuickSort qs = new QuickSort();
+        QuickSortDuplicates qs = new QuickSortDuplicates();
         Random rand = new Random();
         int[] a = new int[length];
         for (int i = 0;i < length;i++) {
             a[i] = rand.nextInt(entropy);
         }
+        System.out.println("Starting sort...");
         long startTime = System.currentTimeMillis();
-        //int[] sorted = qqs.sort(a, 0, a.length - 1);
+        //int[] sorted = qs.sort(a, 0, a.length - 1);
         qs.sort(a, 0, a.length - 1);
 
         long endTime = System.currentTimeMillis();
