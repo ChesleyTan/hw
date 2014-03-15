@@ -1,4 +1,4 @@
-/* Faster than regular MergeSort for small datasets (< 15000) */
+/* Faster than regular MergeSort for small datasets (approx. < 15000) and has a logarithmic space complexity */
 public class MergeSortInPlace {
     public static int[] sort(int[] a, int left, int right) {
         if (left < right) {

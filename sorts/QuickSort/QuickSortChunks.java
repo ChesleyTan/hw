@@ -72,7 +72,7 @@ public class QuickSortChunks {
         long startTime = System.currentTimeMillis();
         qs.sort(a, 0, a.length - 1);
         long endTime = System.currentTimeMillis();
-        System.out.println(Arrays.toString(a));
+        //System.out.println(Arrays.toString(a));
         System.out.println("Sorted array of length " + length + " in " + (endTime - startTime) + " ms.");
     }
 }
