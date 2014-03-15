@@ -1,3 +1,4 @@
+/* Note: QuickSortChunks is a more efficient implementation of this algorithm */
 import java.util.Arrays;
 import java.util.Random;
 public class QuickSortDuplicates {

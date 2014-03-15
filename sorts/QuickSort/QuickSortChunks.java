@@ -33,7 +33,7 @@ public class QuickSortChunks {
                 dupesWall++;
             }
         }
-        return new int[] {wall, dupesWall}; // returns int[] containing 2 ints representing the bounds of the duplicates chunk
+        return new int[] {wall, --dupesWall}; // returns int[] containing 2 ints representing the bounds of the duplicates chunk
     }
     public static void main(String[] args) {
         int length = 10;
@@ -70,11 +70,9 @@ public class QuickSortChunks {
         }
         System.out.println("Starting sort...");
         long startTime = System.currentTimeMillis();
-        //int[] sorted = qs.sort(a, 0, a.length - 1);
         qs.sort(a, 0, a.length - 1);
-
         long endTime = System.currentTimeMillis();
-        //System.out.println(Arrays.toString(sorted));
+        System.out.println(Arrays.toString(a));
         System.out.println("Sorted array of length " + length + " in " + (endTime - startTime) + " ms.");
     }
 }
