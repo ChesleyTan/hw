@@ -24,9 +24,12 @@ public class LLDriver {
         System.out.println("Removing node at 3...");
         L.remove(3);
         System.out.println(L);
+        System.out.println("Removing node at 0...");
+        L.remove(0);
+        System.out.println(L);
         System.out.println();
         System.out.println("Finding " + L.get(3) + " : " + L.find(L.get(3))); 
         System.out.println();
-        System.out.println("Total length of linked list: " + L.length());
+        System.out.println("Total length of linked list: " + L.size());
     }
 }

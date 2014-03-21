@@ -2,18 +2,18 @@ public class MyLinkedList {
     private Node head;  
 
     public MyLinkedList() {
-        head = null;
+        head = new Node("Dummy");
     }
 
     public void add(String s) {
         Node tmp = new Node(s);
-        tmp.setNext(head);
-        head = tmp;
+        tmp.setNext(head.getNext());
+        head.setNext(tmp);
     }
 
     public void add(int i, String s) {
         int pos = 0;
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (pos < i - 1) {
             tmp = tmp.getNext();
             pos++;
@@ -25,7 +25,7 @@ public class MyLinkedList {
 
     public String get(int i) {
         int pos = 0;
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (pos < i) {
             tmp = tmp.getNext();
             pos++;
@@ -35,7 +35,7 @@ public class MyLinkedList {
 
     public String set(int i, String s) {
         int pos = 0;
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (pos < i) {
             tmp = tmp.getNext();
             pos++;
@@ -48,7 +48,7 @@ public class MyLinkedList {
     public String remove(int i) {
         int pos = 0;
         Node tmp = head;
-        while (pos < i - 1) {
+        while (pos < i) {
             tmp = tmp.getNext();
             pos++;
         }
@@ -59,7 +59,7 @@ public class MyLinkedList {
 
     public int find(String s) {
         int pos = 0;
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (tmp != null) {
             if (tmp.getData().equals(s)) {
                 return pos;
@@ -70,9 +70,9 @@ public class MyLinkedList {
         return -1;
     }
     
-    public int length() {
+    public int size() {
         int pos = 0;
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (tmp != null) {
             tmp = tmp.getNext();
             pos++;
@@ -82,7 +82,7 @@ public class MyLinkedList {
 
     public String toString() {
         String retStr = "\n";
-        Node tmp = head;
+        Node tmp = head.getNext();
         while (tmp != null) {
             retStr += tmp + "\n";
             tmp = tmp.getNext();
