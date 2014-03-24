@@ -1,14 +1,16 @@
 public class MyLinkedList {
     private Node head;  
+    private Node tail;
 
     public MyLinkedList() {
         head = new Node("Dummy");
+        tail = head;
     }
 
     public void add(String s) {
         Node tmp = new Node(s);
-        tmp.setNext(head.getNext());
-        head.setNext(tmp);
+        tail.setNext(tmp);
+        tail = tmp;
     }
 
     public void add(int i, String s) {
