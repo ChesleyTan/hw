@@ -1,3 +1,5 @@
+import java.util.*;
+import java.io.*;
 public class LLDriver {
     public static void main(String[] args) {
         MyLinkedList L = new MyLinkedList();
@@ -31,5 +33,11 @@ public class LLDriver {
         System.out.println("Finding " + L.get(3) + " : " + L.find(L.get(3))); 
         System.out.println();
         System.out.println("Total length of linked list: " + L.size());
+
+        System.out.println();
+        Iterator<String> it = L.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
     }
 }

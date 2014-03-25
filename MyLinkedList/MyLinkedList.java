@@ -1,33 +1,35 @@
-public class MyLinkedList {
-    private Node head;  
-    private Node tail;
+import java.util.*;
+import java.io.*;
+public class MyLinkedList<E> {
+    private Node<E> head;  
+    private Node<E> tail;
 
     public MyLinkedList() {
         head = new Node("Dummy");
         tail = head;
     }
 
-    public void add(String s) {
-        Node tmp = new Node(s);
+    public void add(E s) {
+        Node<E> tmp = new Node(s);
         tail.setNext(tmp);
         tail = tmp;
     }
 
-    public void add(int i, String s) {
+    public void add(int i, E s) {
         int pos = 0;
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (pos < i - 1) {
             tmp = tmp.getNext();
             pos++;
         }
-        Node newNode = new Node(s);
+        Node<E> newNode = new Node(s);
         newNode.setNext(tmp.getNext());
         tmp.setNext(newNode);
     }
 
-    public String get(int i) {
+    public E get(int i) {
         int pos = 0;
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (pos < i) {
             tmp = tmp.getNext();
             pos++;
@@ -35,33 +37,33 @@ public class MyLinkedList {
         return tmp.getData();
     }
 
-    public String set(int i, String s) {
+    public E set(int i, E s) {
         int pos = 0;
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (pos < i) {
             tmp = tmp.getNext();
             pos++;
         }
-        String old = tmp.getData();
+        E old = tmp.getData();
         tmp.setData(s);
         return old;
     }
 
-    public String remove(int i) {
+    public E remove(int i) {
         int pos = 0;
-        Node tmp = head;
+        Node<E> tmp = head;
         while (pos < i) {
             tmp = tmp.getNext();
             pos++;
         }
-        String old = tmp.getNext().getData();
+        E old = tmp.getNext().getData();
         tmp.setNext(tmp.getNext().getNext());
         return old;
     }
 
-    public int find(String s) {
+    public int find(E s) {
         int pos = 0;
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (tmp != null) {
             if (tmp.getData().equals(s)) {
                 return pos;
@@ -74,7 +76,7 @@ public class MyLinkedList {
     
     public int size() {
         int pos = 0;
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (tmp != null) {
             tmp = tmp.getNext();
             pos++;
@@ -84,12 +86,16 @@ public class MyLinkedList {
 
     public String toString() {
         String retStr = "\n";
-        Node tmp = head.getNext();
+        Node<E> tmp = head.getNext();
         while (tmp != null) {
-            retStr += tmp + "\n";
+            retStr += tmp.toString() + "\n";
             tmp = tmp.getNext();
         }
         return retStr; 
+    }
+
+    public Iterator<E> iterator() {
+        return new MyLLIterator(head);
     }
 
 }
