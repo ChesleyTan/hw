@@ -1,4 +1,2 @@
-hw
-==
-
 Code snippets
+==
