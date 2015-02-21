@@ -43,4 +43,8 @@ treeDelete x (Node a left right)
           deleteRoot (Node a left right) = Node minNodeRight left (treeDelete minNodeRight right)
           minNodeRight = minNode right
 
+instance Functor Tree where
+    fmap f EmptyTree = EmptyTree
+    fmap f (Node a left right) = Node (f a) (fmap f left) (fmap f right)
+
 demoTree = foldr treeInsert EmptyTree [12,3,9,1,15,10,7,3]
